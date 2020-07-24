@@ -91,13 +91,70 @@ class SortingRobot:
         Returns True if the robot's light is on and False otherwise.
         """
         return self._light == "ON"
+    def left(self):
+        self.set_light_off()
+        while self.can_move_left:
+            self.move_left()
+            if self.compare_item() == -1:
+                self.set_light_on()
+                self.swap_item()
+                self.can_move_right()
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+            elif self.compare_item() == 1:
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+        if self.can_move_left() == False and self.light_is_on:
+            self.right()
+    def right(self):
+        self.set_light_off()
+        while self.can_move_right:
+            self.move_right()
+            if self.compare_item() == 1:
+                self.set_light_on
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+            elif self.compare_item() == -1:
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+        if self.can_move_right() == False and self.light_is_on():
+            self.left()
 
     def sort(self):
         """
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        #select sort
+        # loop through all the elements in the array'
+        # create a smallest value var 
+        # create a smallest value index var
+        # create a second loop 
+        # while this loop this loop is less than or equal to the the length of the arr - 1 run the loop
+        # if the current index is less than your lowest value set that value as the new lowest
+        # change the index of lowest to match
+        # increment your loop
+        # exit the inner loop and swap your current value and current index with your lowest value and lowest index
+        # the outer loop should run again
+
+        # bubble sort
+        self.set_light_on()
+        self.swap_item()
+        self.right()
+        self.swap_item()
+
+           
+
+           
+                
 
 
 if __name__ == "__main__":
