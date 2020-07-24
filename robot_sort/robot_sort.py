@@ -139,49 +139,35 @@ class SortingRobot:
        #use the light on as an indicator of if the function needs to be run again
         self.set_light_on()
        #swap the item none for a list item
-        print(self._item)
-        self.swap_item()
-        print(self._item)
         #enter a loop based on if the light is on
         while self.light_is_on():
             #turn off the light
             self.set_light_off()
-
-            # loop through all the elements in the list
-            while self.can_move_right():
-                # move forward in the list
-                self.can_move_right
-                # if the item to the right of out current item is smaller we swap
-                if self.compare_item() < 0:
-                    self.swap_item()
-        # if the number at the end of the list is bigger then we want to swap   
-        if self.compare_item() > 0:
-            self.swap_item
-        
-        # the largest value should be at the end of the list
-        # now we are going to loop through in reverse
-        if self.can_move_left():
-            self.move_left()
-
-        # now we start our loop in reverse to fix any stragglers
-        while self.can_move_left() and self.compare_item() >= 0:
+            # swap item and the first value
             self.swap_item()
-            self.move_left()
-        # make sure we aren't at the beginning
-        # if we are at the begining everything should be sorted
-        # if not at the beginning, move to beginning and turn on light
-        while self.compare_item() != None:
-            self.move_left()
-            # if the light isn't on, turn it on
-            if not self.light_is_on():
-                self.set_light_on()
-        
-        # after all the loops we are back at the start
-        # we should be holding the smallest number
-        # swap it with the None we placed at the beginning
-        self.swap_item()
+            
+            #loop through the array
+            while self.can_move_right():
+                # move right
+                self.move_right()
+                # if your item is greater swap
+                # and set the boolean to true
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.set_light_on()
+                # we should have the smallest value in the array now
+            # loop back until we're back where we started
+            while self.compare_item() != None:
+                self.move_left()
+            # swap the items
+            self.swap_item()
+            # move right
+            self.move_right()
+            
 
 
+
+  
 
 
 
@@ -197,6 +183,6 @@ if __name__ == "__main__":
     l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
 
     robot = SortingRobot(l)
-    print(robot._item)
     robot.sort()
     print(robot._list)
+    
